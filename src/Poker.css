@@ -228,38 +228,38 @@ img {
   transform: translateX(-50%);
   /* left: 43.75%; /* 50% - 6.25% (87.5px/1400px) */
 }
-.p1 {
+.p2 {
   top: -5.738%;
   left: 21%; /* 50% - 25.892857% (362.5px/1400px) */
 }
-.number1 {
+.number2 {
   top: 125% !important;
 }
-.number4 {
+.number3 {
   top: 125% !important;
 }
 
-.p2 {
+.p1 {
   bottom: 21.1518%;
   left: 2%;
 }
 .TheAmountBed {
   display: none;
 }
-.number2 {
+.number1 {
   left: 131px;
   top: 27px !important;
 }
 
-.p4 {
+.p3 {
   top: -5.738%;
   right: 21.107143%;
 }
-.p3 {
+.p4 {
   bottom: 21.1518%;
   right: 2%;
 }
-.number3 {
+.number4 {
   left: -100px;
   top: 26px !important;
 }
