@@ -5,7 +5,7 @@ import {
 } from './players.js';
 
 const totalNumCards = 52;
-const suits = ['Heart', 'Spade', 'Club', 'Diamond'];
+const suits = ['Club', 'Heart', 'Spade', 'Diamond'];
 const cards = [
   '2',
   '3',
@@ -45,6 +45,7 @@ const randomizePosition = (min, max) => {
 
 const generateDeckOfCards = () => {
   const deck = [];
+  var value = 1;
 
   for (let suit of suits) {
     for (let card of cards) {
@@ -52,9 +53,14 @@ const generateDeckOfCards = () => {
         cardFace: card,
         suit: suit,
         value: VALUE_MAP[card],
+        cardImage: `/assets/Layer${value}.png`,
       });
+      value++;
     }
   }
+
+  console.log('THEEEEEEEEEEE DECCCCCCCCCCCCCK');
+  console.log(deck);
   return deck;
 };
 

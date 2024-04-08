@@ -19,8 +19,8 @@ const generateTable = async () => {
   const users = [
     {
       id: uuid(),
-      name: 'Player 1',
-      avatarURL: '/assets/boy.svg',
+      name: 'GUEST 1',
+      avatarURL: '/assets/1.png',
       cards: [],
       showDownHand: {
         hand: [],
@@ -38,16 +38,100 @@ const generateTable = async () => {
       stackInvestment: 0,
       robot: false,
     },
+    // {
+    //   id: uuid(),
+    //   name: 'GUEST 2',
+    //   avatarURL: '/assets/2.png',
+    //   cards: [],
+    //   showDownHand: {
+    //     hand: [],
+    //     descendingSortHand: [],
+    //   },
+    //   chips: Math.floor(Math.random() * (20000 - 18000)) + 18000,
+    //   roundStartChips: Math.floor(Math.random() * (20000 - 18000)) + 18000,
+    //   roundEndChips: Math.floor(Math.random() * (20000 - 18000)) + 18000,
+    //   currentRoundChipsInvested: 0,
+    //   bet: 0,
+    //   betReconciled: false,
+    //   folded: false,
+    //   allIn: false,
+    //   canRaise: true,
+    //   stackInvestment: 0,
+    //   robot: false,
+    // },
+    // {
+    //   id: uuid(),
+    //   name: 'GUEST 3',
+    //   avatarURL: '/assets/3.png',
+    //   cards: [],
+    //   showDownHand: {
+    //     hand: [],
+    //     descendingSortHand: [],
+    //   },
+    //   chips: Math.floor(Math.random() * (20000 - 18000)) + 18000,
+    //   roundStartChips: Math.floor(Math.random() * (20000 - 18000)) + 18000,
+    //   roundEndChips: Math.floor(Math.random() * (20000 - 18000)) + 18000,
+    //   currentRoundChipsInvested: 0,
+    //   bet: 0,
+    //   betReconciled: false,
+    //   folded: false,
+    //   allIn: false,
+    //   canRaise: true,
+    //   stackInvestment: 0,
+    //   robot: false,
+    // },
+    // {
+    //   id: uuid(),
+    //   name: 'GUEST 4',
+    //   avatarURL: '/assets/4.png',
+    //   cards: [],
+    //   showDownHand: {
+    //     hand: [],
+    //     descendingSortHand: [],
+    //   },
+    //   chips: Math.floor(Math.random() * (20000 - 18000)) + 18000,
+    //   roundStartChips: Math.floor(Math.random() * (20000 - 18000)) + 18000,
+    //   roundEndChips: Math.floor(Math.random() * (20000 - 18000)) + 18000,
+    //   currentRoundChipsInvested: 0,
+    //   bet: 0,
+    //   betReconciled: false,
+    //   folded: false,
+    //   allIn: false,
+    //   canRaise: true,
+    //   stackInvestment: 0,
+    //   robot: false,
+    // },
+    // {
+    //   id: uuid(),
+    //   name: 'GUEST 5',
+    //   avatarURL: '/assets/5.png',
+    //   cards: [],
+    //   showDownHand: {
+    //     hand: [],
+    //     descendingSortHand: [],
+    //   },
+    //   chips: Math.floor(Math.random() * (20000 - 18000)) + 18000,
+    //   roundStartChips: Math.floor(Math.random() * (20000 - 18000)) + 18000,
+    //   roundEndChips: Math.floor(Math.random() * (20000 - 18000)) + 18000,
+    //   currentRoundChipsInvested: 0,
+    //   bet: 0,
+    //   betReconciled: false,
+    //   folded: false,
+    //   allIn: false,
+    //   canRaise: true,
+    //   stackInvestment: 0,
+    //   robot: false,
+    // },
   ];
 
   const response = await axios.get(
     `https://randomuser.me/api/?results=4&nat=us,gb,fr`
   );
-  console.log('ya resnse aya ha ');
-  var newResponse = response.data.results;
-  newResponse.pop();
-  console.log(newResponse);
-  newResponse
+  // console.log('ya resnse aya ha ');
+  // var newResponse = response.data.results;
+  // newResponse.pop();
+  // console.log(newResponse);
+  response.data.results
     .map((user) => {
       const randomizedChips =
         Math.floor(Math.random() * (20000 - 18000)) + 18000;

@@ -9,6 +9,11 @@ img {
   width: 100%;
   height: 100%;
 }
+.Loader-image-css {
+  object-fit: contain;
+  width: 133%;
+  height: 100%;
+}
 .centered-flex-row {
   display: flex;
   justify-content: center;
@@ -28,12 +33,40 @@ img {
   animation: App-logo-spin infinite 20s linear;
 }
 
-.loading-container {
+.loading-container-top-div {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
+  background-image: url('/public/assets/bg.png');
+}
+.loading-text {
+  position: absolute;
+  bottom: 74px;
+  color: white;
+  font-weight: bold;
+  font-family: math;
+}
+
+.loading-bar-container {
+  width: 100%; /* Adjust the width of the loading bar container */
+  height: 37px; /* Adjust the height of the loading bar container */
+  /* Add border for visual appearance */
+  overflow: hidden; /* Hide overflowing content */
+  position: absolute;
+  bottom: 43px;
+}
+
+.loading-bar {
+  width: 101%; /* Initial width of the loading bar */
+  height: 100%; /* Set the height to 100% of the container */
+  transition: width 0.4s ease; /* Add smooth transition effect */
+}
+
+/* Example class to demonstrate loading progress */
+.loading-progress {
+  width: 50%; /* Adjust to represent loading progress (e.g., 50% for halfway) */
 }
 
 .flex-centered-column {
@@ -70,10 +103,10 @@ img {
   background-color: white;
   font-size: 1em;
 
-  height: 50px;
-  width: 35px;
+  height: 70px;
+  width: 50px;
   margin: 0 1px;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
 
   opacity: 0;
   animation: fade-in-up 0.5s;
@@ -81,7 +114,10 @@ img {
 }
 .robotcard {
   background-color: #890808;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='12' viewBox='0 0 20 12'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='charlie-brown' fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M9.8 12L0 2.2V.8l10 10 10-10v1.4L10.2 12h-.4zm-4 0L0 6.2V4.8L7.2 12H5.8zm8.4 0L20 6.2V4.8L12.8 12h1.4zM9.8 0l.2.2.2-.2h-.4zm-4 0L10 4.2 14.2 0h-1.4L10 2.8 7.2 0H5.8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-image: url('/public/assets/Layer53.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .folded {
   animation: fade-in-out 0.5s;
@@ -194,15 +230,18 @@ img {
 }
 .p1 {
   top: -5.738%;
-  left: 45%; /* 50% - 25.892857% (362.5px/1400px) */
+  left: 21%; /* 50% - 25.892857% (362.5px/1400px) */
 }
 .number1 {
   top: 125% !important;
 }
+.number4 {
+  top: 125% !important;
+}
 
 .p2 {
-  bottom: 38.1518%;
-  left: -3%;
+  bottom: 21.1518%;
+  left: 2%;
 }
 .TheAmountBed {
   display: none;
@@ -213,12 +252,12 @@ img {
 }
 
 .p4 {
-  bottom: 8.262%;
-  right: 24.107143%;
+  top: -5.738%;
+  right: 21.107143%;
 }
 .p3 {
-  bottom: 38.1518%;
-  right: -3%;
+  bottom: 21.1518%;
+  right: 2%;
 }
 .number3 {
   left: -100px;
@@ -290,7 +329,7 @@ img {
 
 .abscard {
   position: absolute;
-  top: -80px;
+  top: -97px;
 }
 
 .shrinkwrap {
@@ -308,40 +347,42 @@ img {
 .slider-boi {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   width: 55%;
   height: 100%;
 }
 
 .action-button {
-  height: 45px;
-  width: 125px;
+  height: 40px;
+  width: 152px;
   margin: 0 12px;
-  border-radius: 500px;
+
   background-color: rgba(242, 242, 242, 0.8);
-  font-size: 28px;
+  font-size: 25px;
   color: white;
-  background-color: #2adb2a;
-  border: 3px solid white;
+  background-color: #002c81;
+  border-width: inherit;
   outline: none;
+  text-transform: uppercase;
   transition: background-color 0.4s ease-out, color 0.4s ease-out;
 }
 .action-button:hover {
   cursor: pointer;
-  background-color: #ffc935;
-  color: #f56132;
+  background-color: #001d58;
 }
 .fold-button {
-  height: 45px;
-  width: 125px;
+  height: 40px;
+  width: 152px;
   margin: 0 12px;
   background-color: rgba(255, 80, 80, 0.8);
-  font-size: 28px;
+  font-size: 25px;
   color: white;
   outline: none;
   z-index: 100;
-  border-radius: 500px;
-  border: 3px solid white;
+  border-radius: 0px;
+  border-width: inherit;
+  text-transform: uppercase;
+
   transition: background-color 0.4s ease-out, color 0.4s ease-out;
 }
 .fold-button:hover {
@@ -682,7 +723,7 @@ img {
 }
 
 .poker-table--table-image {
-  width: 100%;
+  width: 90%;
   height: 100%;
 }
 
@@ -724,11 +765,10 @@ img {
     color: whitesmoke;
     border-radius: 100px;
     background-color: rgba(0, 0, 0, 10);
-    border: 1px solid white;
   }
   .pot-container {
     top: 55px;
-    right: 20%;
+    right: 16%;
     left: unset;
   }
 }
