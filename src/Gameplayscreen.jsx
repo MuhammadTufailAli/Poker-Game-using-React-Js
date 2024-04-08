@@ -561,7 +561,7 @@ class Gameplayscreen extends Component {
                     cursor: 'pointer',
                   }}
                   onClick={() => {
-                    alert('Coming soon');
+                    window.location.href = '/';
                   }}
                 >
                   <p className='yes-text exit-common-text'>YES</p>

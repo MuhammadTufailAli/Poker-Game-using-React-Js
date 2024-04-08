@@ -120,8 +120,8 @@
 }
 .bar-parent-get-chip {
   background-image: url('/public/assets/pokergetbutton.png');
-  width: 78%;
-  margin-left: 16px;
+  width: 67%;
+  margin-left: 19px;
 }
 .bar-parent-get-chip-text {
   margin: 0px;
@@ -130,4 +130,106 @@
   padding: 4px;
   color: white;
   font-weight: 600;
+}
+.plus-button {
+  width: 40px;
+  margin-left: -26px;
+  cursor: pointer;
+}
+.shield-and-bar-parent-with-text {
+  display: flex;
+  position: relative;
+}
+.bar-parent-text-amature {
+  position: absolute;
+  /* top: 0; */
+  left: 54px;
+  bottom: 30px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.Language-background-image {
+  background-image: url('/public/assets/mainbuttonname.png');
+  width: 132px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #959595;
+  margin-left: 25px;
+  margin-top: 15px;
+}
+.Language-background-image-text {
+  color: white;
+  font-weight: 600;
+}
+.dot-background-image {
+  background-image: url('/public/assets/dot.png');
+  width: 19px;
+  height: 13px;
+  cursor: pointer;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 items in the first row */
+  gap: 20px; /* Adjust as needed */
+  padding-left: 118px;
+}
+@media (max-width: 768px) {
+  /* Media query for smaller screens */
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 items in the first row */
+  }
+}
+
+.grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 93px;
+}
+.tick-image {
+  width: 18px;
+  margin-left: 1px;
+  margin-bottom: 15px;
+}
+
+.grid-item-language {
+  color: white;
+  font-weight: 600;
+}
+.grid-item-sound {
+  flex-direction: column;
+}
+.button-background-image {
+  background-image: url('/public/assets/button.png');
+  width: 63px;
+  height: 23px;
+  cursor: pointer;
+  margin-top: -3px;
+}
+.on-image {
+  background-image: url('/public/assets/on.png');
+  width: 47%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.off-image {
+  background-image: url('/public/assets/off.png');
+  width: 47%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.on-text {
+  margin: 0px;
+  color: white;
+  font-size: 13px;
 }

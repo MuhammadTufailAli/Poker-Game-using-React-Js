@@ -1,37 +1,187 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import '../Css/Mainmenuscreen.css';
 function Mainmenuscreen() {
   const navigate = useNavigate();
+
+  const [languageSelected, setLanguageSelected] = useState(0);
+  const [gameSound, setGameSound] = useState('ON');
+  const [gameMusic, setGameMusic] = useState('ON');
+  const [vibration, setVibration] = useState('OFF');
+  const [settingModal, setsettingModal] = useState(false);
+
+  const languageArray = [
+    { language: 'ENGLISH' },
+    { language: 'PORTUGUESE' },
+    { language: 'DEUTSCH' },
+    { language: 'ITALIANO' },
+    { language: 'ESPANOL' },
+  ];
+
+  const soundArray = [
+    { language: 'GAME SOUND' },
+    { language: 'GAME MUSIC' },
+    { language: 'VIBRATION' },
+  ];
   return (
     <div className='main-menu-top-div'>
-      <div className='Exit-modal-div'>
-        <div
-          style={{
-            width: '100%', // adjust width and height as needed
-            height: '420px', // adjust width and height as needed
-            backgroundImage: "url('/assets/exit_box.png')",
-            backgroundSize: '100% 100%',
-            maxHeight: '420px', // adjust background size as needed
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
-          <div className='exit-top-bar'>
-            <img
-              className='exit-button rotateIt'
-              src='./assets/back_button.png'
-              alt='backbutton'
-              onClick={() => {
-                this.setState({ showExitModal: false });
-              }}
-            />
+      {settingModal && (
+        <div className='Exit-modal-div'>
+          <div
+            style={{
+              width: '100%', // adjust width and height as needed
+              height: '420px', // adjust width and height as needed
+              backgroundImage: "url('/assets/exit_box.png')",
+              backgroundSize: '100% 100%',
+              maxHeight: '420px', // adjust background size as needed
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            <div className='exit-top-bar'>
+              <img
+                className='exit-button rotateIt'
+                src='./assets/back_button.png'
+                alt='backbutton'
+                onClick={() => {
+                  setsettingModal(false);
+                }}
+              />
 
-            <p className='menu-text'>SETTINGS</p>
-          </div>
+              <p className='menu-text'>SETTINGS</p>
+            </div>
+            {/* top Div */}
+            <div>
+              <div className='Language-background-image'>
+                <p className='Language-background-image-text'>LANGUAGE</p>
+              </div>
 
-          <div className='exit-modal-three-options'>
+              <div className='grid-container'>
+                {languageArray.map((language, index) => (
+                  <div key={index} className='grid-item'>
+                    <p className='grid-item-language'>{language?.language}</p>
+                    <div
+                      className='dot-background-image'
+                      onClick={() => {
+                        setLanguageSelected(index);
+                      }}
+                    >
+                      {languageSelected === index && (
+                        <img
+                          className='tick-image'
+                          src='./assets/tick.png'
+                          alt='backbutton'
+                        />
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* bottom div */}
+            <div>
+              <div className='Language-background-image'>
+                <p className='Language-background-image-text'>SOUND</p>
+              </div>
+
+              <div className='grid-container'>
+                <div className='grid-item grid-item-sound'>
+                  <p className='grid-item-language'>GAME SOUND</p>
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent:
+                        gameSound === 'ON' ? 'flex-start' : 'flex-end',
+                    }}
+                    className='button-background-image'
+                    onClick={() => {
+                      if (gameSound === 'ON') {
+                        setGameSound('OFF');
+                      } else {
+                        setGameSound('ON');
+                      }
+                    }}
+                  >
+                    <div
+                      className={gameSound === 'ON' ? 'on-image' : 'off-image'}
+                    >
+                      <p className='on-text'>{gameSound}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className='grid-item grid-item-sound'>
+                  <p className='grid-item-language'>GAME MUSIC</p>
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent:
+                        gameMusic === 'ON' ? 'flex-start' : 'flex-end',
+                    }}
+                    className='button-background-image'
+                    onClick={() => {
+                      if (gameMusic === 'ON') {
+                        setGameMusic('OFF');
+                      } else {
+                        setGameMusic('ON');
+                      }
+                    }}
+                  >
+                    <div
+                      className={gameMusic === 'ON' ? 'on-image' : 'off-image'}
+                    >
+                      <p className='on-text'>{gameMusic}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className='grid-item grid-item-sound'>
+                  <p className='grid-item-language'>VIBRATION</p>
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent:
+                        vibration === 'ON' ? 'flex-start' : 'flex-end',
+                    }}
+                    className='button-background-image'
+                    onClick={() => {
+                      if (vibration === 'ON') {
+                        setVibration('OFF');
+                      } else {
+                        setVibration('ON');
+                      }
+                    }}
+                  >
+                    <div
+                      className={vibration === 'ON' ? 'on-image' : 'off-image'}
+                    >
+                      <p className='on-text'>{vibration}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* <div className='grid-container'>
+              {soundArray.map((language, index) => (
+                <div key={index} className='grid-item grid-item-sound'>
+                  <p className='grid-item-language'>{language?.language}</p>
+                  <div
+                    className='button-background-image'
+                    onClick={() => {
+                      setLanguageSelected(index);
+                    }}
+                  >
+                    <div className='on-image'>
+                      <p className='on-text'>ON</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div> */}
+            </div>
+
+            {/* <div className='exit-modal-three-options'>
             <div
               style={{
                 width: '200px', // adjust width and height as needed
@@ -81,9 +231,11 @@ function Mainmenuscreen() {
             >
               <p className='friends-text exit-common-text'>FRIENDS</p>
             </div>
+          </div> */}
           </div>
         </div>
-      </div>
+      )}
+
       {/* top bar */}
       <div className='main-menu-top-bar'>
         {/* left */}
@@ -117,10 +269,10 @@ function Mainmenuscreen() {
                 <p className='bar-parent-get-chip-text'>GET CHIPS</p>
               </div>
             </div>
-            <img className='bar-button' src='./assets/plusbutton.png' alt='' />
+            <img className='plus-button' src='./assets/plusbutton.png' alt='' />
           </div>
 
-          <div className='shield-and-bar-parent'>
+          <div className='shield-and-bar-parent-with-text'>
             <img
               style={{ marginTop: '-3px' }}
               className='shield-button'
@@ -130,12 +282,16 @@ function Mainmenuscreen() {
             <div className='bar-parent'>
               <img className='bar-button' src='./assets/main.png' alt='' />
             </div>
+            <p className='bar-parent-text-amature'>AMATEUR</p>
           </div>
         </div>
         {/* right */}
         <div className='main-menu-top-bar-right'>
           <div>
             <img
+              onClick={() => {
+                setsettingModal(true);
+              }}
               className='exit-button'
               src='./assets/settingbutton.png'
               alt='backbutton'
