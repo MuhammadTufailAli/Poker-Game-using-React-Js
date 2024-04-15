@@ -43,6 +43,7 @@ import {
 
 import { cloneDeep } from 'lodash';
 import buttonclick from './Sounds/buttonClick.wav';
+import callsound from './Sounds/call_button.mp3';
 
 class Gameplayscreen extends Component {
   state = {
@@ -387,7 +388,7 @@ class Gameplayscreen extends Component {
           onClick={() => {
             this.handleFold();
             if (this.state.gamesound) {
-              new Audio(buttonclick).play();
+              new Audio(callsound).play();
             }
           }}
         >
@@ -398,7 +399,7 @@ class Gameplayscreen extends Component {
           onClick={() => {
             this.handleBetInputSubmit(betInputValue, min, max);
             if (this.state.gamesound) {
-              new Audio(buttonclick).play();
+              new Audio(callsound).play();
             }
           }}
         >

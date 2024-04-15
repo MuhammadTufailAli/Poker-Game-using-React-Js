@@ -9,11 +9,12 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 170px;
+
   background-image: url('../../public/assets/uperbar.png');
   background-size: cover; /* Adjust to cover entire element */
   background-repeat: no-repeat; /* Do not repeat the background image */
   background-position: center center;
+  height: 25%;
 }
 .main-menu-top-bar-left {
   display: flex;

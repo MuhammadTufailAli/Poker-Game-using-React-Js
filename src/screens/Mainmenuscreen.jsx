@@ -55,7 +55,7 @@ function Mainmenuscreen() {
       if (element) {
         element.click();
       }
-    }, 3000); // 3000 milliseconds = 3 seconds
+    }, 1000); // 3000 milliseconds = 3 seconds
 
     // Clean up the timeout to prevent memory leaks
     return () => clearTimeout(timeout);
@@ -83,10 +83,8 @@ function Mainmenuscreen() {
     { language: 'VIBRATION' },
   ];
   if (showSpinner) {
-    return <Spinner />;
-  } else {
     return (
-      <div className='main-menu-top-div'>
+      <>
         <button
           style={{ display: 'none' }}
           className='game-music-div'
@@ -101,6 +99,12 @@ function Mainmenuscreen() {
         >
           click
         </button>
+        <Spinner />
+      </>
+    );
+  } else {
+    return (
+      <div className='main-menu-top-div'>
         {settingModal && (
           <div className='Exit-modal-div'>
             <div
