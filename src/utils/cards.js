@@ -59,8 +59,6 @@ const generateDeckOfCards = () => {
     }
   }
 
-  console.log('THEEEEEEEEEEE DECCCCCCCCCCCCCK');
-  console.log(deck);
   return deck;
 };
 
@@ -125,8 +123,6 @@ const dealPrivateCards = (state) => {
   state.clearCards = false;
   let animationDelay = 0;
   while (state.players[state.activePlayerIndex].cards.length < 2) {
-    console.log('OYEEEEEEEEEEEE', state);
-    console.log('DECK', state.deck);
     const { mutableDeckCopy, chosenCards } = popCards(state.deck, 1);
 
     // Can export to a separate function - as it will be used in many places

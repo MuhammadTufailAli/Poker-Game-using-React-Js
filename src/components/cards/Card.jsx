@@ -7,7 +7,6 @@ const Card = (props) => {
     applyFoldedClassname,
   } = props;
 
-  console.log('cardData', cardImage, 'and', applyFoldedClassname);
   return (
     <div
       key={`${suit} ${cardFace}`}

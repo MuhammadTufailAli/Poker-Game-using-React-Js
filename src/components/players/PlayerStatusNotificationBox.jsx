@@ -7,7 +7,6 @@ function PlayerStatusNotificationBox({
   content,
   endTransition,
 }) {
-  console.log(index, 'INDEXXXXX', isActive, content, endTransition);
   return (
     <CSSTransition
       in={isActive}

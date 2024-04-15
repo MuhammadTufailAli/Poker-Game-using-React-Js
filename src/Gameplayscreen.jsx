@@ -42,10 +42,12 @@ import {
 } from './utils/ui.js';
 
 import { cloneDeep } from 'lodash';
+import buttonclick from './Sounds/buttonClick.wav';
 
 class Gameplayscreen extends Component {
   state = {
     loading: true,
+    gamesound: localStorage.getItem('gamesound'),
     additionalCondition: true,
     winnerFound: null,
     players: null,
@@ -84,7 +86,7 @@ class Gameplayscreen extends Component {
 
   async componentDidMount() {
     const players = await generateTable();
-    console.log('THE PLAYERSSSSSSSSSS', players);
+
     const dealerIndex = Math.floor(Math.random() * Math.floor(players.length));
     const blindIndicies = determineBlindIndices(dealerIndex, players.length);
     const playersBoughtIn = anteUpBlinds(
@@ -96,9 +98,6 @@ class Gameplayscreen extends Component {
     const imageLoaderRequest = new XMLHttpRequest();
 
     imageLoaderRequest.addEventListener('load', (e) => {
-      console.log(`${e.type}`);
-      console.log(e);
-      console.log('Image Loaded!');
       this.setState({
         loading: false,
       });
@@ -108,30 +107,15 @@ class Gameplayscreen extends Component {
       }, 2500);
     });
 
-    imageLoaderRequest.addEventListener('error', (e) => {
-      console.log(`${e.type}`);
-      console.log(e);
-    });
+    imageLoaderRequest.addEventListener('error', (e) => {});
 
-    imageLoaderRequest.addEventListener('loadstart', (e) => {
-      console.log(`${e.type}`);
-      console.log(e);
-    });
+    imageLoaderRequest.addEventListener('loadstart', (e) => {});
 
-    imageLoaderRequest.addEventListener('loadend', (e) => {
-      console.log(`${e.type}`);
-      console.log(e);
-    });
+    imageLoaderRequest.addEventListener('loadend', (e) => {});
 
-    imageLoaderRequest.addEventListener('abort', (e) => {
-      console.log(`${e.type}`);
-      console.log(e);
-    });
+    imageLoaderRequest.addEventListener('abort', (e) => {});
 
-    imageLoaderRequest.addEventListener('progress', (e) => {
-      console.log(`${e.type}`);
-      console.log(e);
-    });
+    imageLoaderRequest.addEventListener('progress', (e) => {});
 
     imageLoaderRequest.open('GET', './assets/table-nobg-svg-01.svg');
     imageLoaderRequest.send();
@@ -204,7 +188,6 @@ class Gameplayscreen extends Component {
       }`
     );
 
-    console.log('a na bet ki', appState);
     const newState = handleBet(
       cloneDeep(appState),
       parseInt(bet, 10),
@@ -399,12 +382,25 @@ class Gameplayscreen extends Component {
       players[activePlayerIndex].chips + players[activePlayerIndex].bet;
     return players[activePlayerIndex].robot || phase === 'showdown' ? null : (
       <React.Fragment>
-        <button className='fold-button' onClick={() => this.handleFold()}>
+        <button
+          className='fold-button'
+          onClick={() => {
+            this.handleFold();
+            if (this.state.gamesound) {
+              new Audio(buttonclick).play();
+            }
+          }}
+        >
           Fold
         </button>
         <button
           className='action-button'
-          onClick={() => this.handleBetInputSubmit(betInputValue, min, max)}
+          onClick={() => {
+            this.handleBetInputSubmit(betInputValue, min, max);
+            if (this.state.gamesound) {
+              new Audio(buttonclick).play();
+            }
+          }}
         >
           {renderActionButtonText(
             highBet,
@@ -431,7 +427,12 @@ class Gameplayscreen extends Component {
         </div>
         <button
           className='showdown--nextRound--button'
-          onClick={() => this.handleNextRound()}
+          onClick={() => {
+            this.handleNextRound();
+            if (this.state.gamesound) {
+              new Audio(buttonclick).play();
+            }
+          }}
         >
           {' '}
           Next Round{' '}
@@ -466,6 +467,9 @@ class Gameplayscreen extends Component {
                   src='./assets/back_button.png'
                   alt='backbutton'
                   onClick={() => {
+                    if (this.state.gamesound) {
+                      new Audio(buttonclick).play();
+                    }
                     this.setState({ showExitModal: false });
                   }}
                 />
@@ -487,6 +491,10 @@ class Gameplayscreen extends Component {
                     cursor: 'pointer',
                   }}
                   onClick={() => {
+                    console.log('OYE', this.state.gamesound);
+                    if (this.state.gamesound === 'true') {
+                      new Audio(buttonclick).play();
+                    }
                     this.setState({ showExitModal: false });
                     this.setState({ showExitMenu: true });
                   }}
@@ -561,6 +569,9 @@ class Gameplayscreen extends Component {
                     cursor: 'pointer',
                   }}
                   onClick={() => {
+                    if (this.state.gamesound === 'true') {
+                      new Audio(buttonclick).play();
+                    }
                     window.location.href = '/';
                   }}
                 >
@@ -580,6 +591,9 @@ class Gameplayscreen extends Component {
                   }}
                   onClick={() => {
                     this.setState({ showExitMenu: false });
+                    if (this.state.gamesound === 'true') {
+                      new Audio(buttonclick).play();
+                    }
                   }}
                 >
                   <p className='yes-text exit-common-text'>NO</p>
@@ -624,6 +638,13 @@ class Gameplayscreen extends Component {
                 alt='backbutton'
                 onClick={() => {
                   this.setState({ showExitModal: true });
+                  console.log(
+                    ' i will open the modal',
+                    this.state.gamesound === 'true'
+                  );
+                  if (this.state.gamesound === 'true') {
+                    new Audio(buttonclick).play();
+                  }
                 }}
               />
             </div>
@@ -656,8 +677,8 @@ class Gameplayscreen extends Component {
   };
 
   render() {
-    console.log(this.state.additionalCondition);
-    console.log(this.state.loading);
+    // this.setState({ gamesound: localStorage.getItem('gamesound') });
+    // console.log(gamesound, 'THissss is ');
     return (
       <div className='App'>
         <div className='poker-table--wrapper'>

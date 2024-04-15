@@ -164,6 +164,7 @@ img {
   z-index: 100;
   display: none;
   justify-content: center;
+  font-size: 28px;
 }
 
 .transitionable-actionBox-enter {
@@ -350,6 +351,9 @@ img {
   justify-content: flex-start;
   width: 55%;
   height: 100%;
+}
+.slider-boi h4 {
+  font-size: 22px;
 }
 
 .action-button {
