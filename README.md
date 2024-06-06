@@ -1,3 +1,2 @@
-5-Player Texas Hold 'Em Poker, built with React.
-
-Check it out: http://www.react-poker.surge.sh
+Use Following link to view Poker game
+Link:https://poker-game-8crq.vercel.app/
